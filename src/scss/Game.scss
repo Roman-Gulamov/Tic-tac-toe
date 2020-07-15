@@ -1,0 +1,43 @@
+.tic-tac-toe {
+    max-width: 300px;
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.board {
+    min-width: 84px;
+    min-height: 84px;
+    margin: 1px;
+    border: 1px solid black;
+    display: flex;
+    place-content: center;
+
+    & span {
+        margin-top: 25px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+}
+
+.X {
+    color: red;
+}
+
+.O {
+    color: blue;
+}
+
+.whoNext {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.result {
+    color: green;
+    margin-left: 20%;
+}
+
+.green {
+    background-color: green;
+}
