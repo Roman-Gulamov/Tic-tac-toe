@@ -12,8 +12,8 @@ export const Game = () => {
     const [disabled, setDisabled] = useState();
     
     const xO = (count % 2 === 0) ? "X" : "O";
+    const whoNext = (squares.includes(null) && winner === "") ? `Next Player: ${xO}` : "";
     const findWinner = (!squares.includes(null) && winner === "") ? "Draw" : "";
-    const whoNext = (squares.includes(null) && winner === '') ? `Next Player: ${xO}` : "";
 
 
     const clickHandler = (event) => {
