@@ -1,0 +1,76 @@
+body {
+    background-color: #FFD8AB;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 170px auto;
+    max-width: 300px;
+    user-select: none;
+
+    &__board {
+        display: flex;
+        place-content: center;
+        min-width: 84px;
+        min-height: 84px;
+        border: 6px solid rgba(0, 0, 0, 0.897);
+        opacity: 0.8;
+
+        & span {
+            margin-top: 8px;
+            font-family: cursive;
+            font-size: 50px;
+            font-weight: bold;
+        }
+    }
+    
+    &__winnerColor {
+        background-color: #B7D98E;
+    }
+
+    &__status {
+        position: absolute;
+        bottom: 110%;
+        color: #a6c420;
+        width: 100%;
+        text-align: center;
+        
+        & span {
+            font-family: cursive;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    }
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.top {
+    border-top: none;
+}
+
+.right {
+    border-right: none;
+}
+
+.bottom {
+    border-bottom: none;
+}
+
+.left {
+    border-left: none;
+}
+
+.X {
+    color: #D92525;
+}
+
+.O {
+    color: #64B0D8;
+}
+
+
