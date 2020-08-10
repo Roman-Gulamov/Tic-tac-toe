@@ -1,113 +1,74 @@
-import React, { Component } from 'react';
-import '../scss/Game.scss';
-import Board from './Board';
+import React, { useState } from 'react';
+import { Field } from './Field';
+import { winnerLine } from './winnerLine/winnerLine';
 
-export default class Game extends Component {
-    constructor(props) {
-        super(props)
+
+export const Game = () => {
+    const [squares, setSquares] = useState(Array(9).fill(null));
+    const [winnerColor, setWinnerColor] = useState(Array(9).fill(null));
+    const [count, setCount] = useState(0);
+    const [result, setResult] = useState("");
+    const [winner, setWinner] = useState("");
+    const [disabled, setDisabled] = useState();
     
-        this.state = {
-            squares: Array(9).fill(null),
-            count: 0,
-            draw: 'Draw',
-            winner: ''
-        }
+    const xO = (count % 2 === 0) ? "X" : "O";
+    const findWinner = (!squares.includes(null) && winner === "") ? "Draw" : "";
+    const whoNext = (squares.includes(null) && winner === '') ? `Next Player: ${xO}` : "";
 
-        this.winnerLine = [
-            [0, 1, 2],
-            [3, 4, 5],          // Горизонталь
-            [6, 7, 8],              
 
-            [0, 3, 6],
-            [1, 4, 7],          // Вертикаль
-            [2, 5, 8],
-
-            [0, 4, 8],          // Диагональ
-            [2, 4, 6]           
-        ]
+    const clickHandler = (event) => {
+        const data = event.target.getAttribute("data");   // номер квадрата, по которому кликнули
+        let currentSquares = squares;
+            if (currentSquares[data] === null) {
+                currentSquares[data] = xO;
+                setSquares(currentSquares);
+                setWinnerColor(currentSquares);
+                setCount(count + 1);
+                calculateWinner();
+            }
     }
-    
-    isWinner = () => {
-        const xO = (this.state.count % 2 === 0) ? "X" : "O";
-        
+
+    const calculateWinner = () => {
         for (let i = 0; i < 8; i++) {
-            let line = this.winnerLine[i]
-            if (this.state.squares[line[0]] === xO &&
-                this.state.squares[line[1]] === xO && 
-                this.state.squares[line[2]] === xO) {
-                    this.setState({
-                        winner: xO
-                    }); 
-                    setTimeout(() => {
-                        this.setState({
-                            squares: Array(9).fill(null),
-                            count: 0,
-                            winner: ""
-                        }); 
-                    }, 1000)
-                } else if (!this.state.squares.includes(null)) {
-                    setTimeout(() => {
-                        this.setState({
-                            squares: Array(9).fill(null),
-                            count: 0
-                        }); 
-                    }, 1000)
-                }
+            let line = winnerLine[i];
+            if (squares[line[0]] === xO && squares[line[1]] === xO && squares[line[2]] === xO) {
+                setResult("Winner:");
+                setWinner(xO);
+                setWinnerColor(line);
+                setDisabled("disabled");
+                clearAfter();
+            } else if (!squares.includes(null)) {
+                setDisabled("disabled");
+                clearAfter();
+            }
         } 
     }
 
-    clickHandler = (event) => {
-        // data - номер квадрата, по которому кликнули
-        let data = event.target.getAttribute("data");
-        let currentSquares = this.state.squares;
-            if (currentSquares[data] === null) {
-                currentSquares[data] = (this.state.count % 2 === 0) ? "X" : "O";
-                this.setState({
-                    squares: currentSquares,
-                    count: this.state.count + 1,
-                    winner: ""
-                });
-            }
-        this.isWinner();
+    const clearAfter = () => {
+        setTimeout(() => {
+            setSquares(Array(9).fill(null));
+            setCount(0);
+            setDisabled("");
+            setWinner("");
+            setResult("");
+        }, 800);
     }
 
-    render() {
-        const whoNext = () => {
-            if(this.state.winner === '' && this.state.squares.includes(null)) {
-                return `Next Player:  ${(this.state.count % 2 === 0) ? "X" : "O"}`
-            }
-        }
-
-        const result = () => {
-            if (this.state.winner !== '') {
-                return `Winner: ${this.state.winner}`
-            } else if (!this.state.squares.includes(null)) {
-                return this.state.draw
-            }
-        }
-
-        const nextO = {
-            color: "blue"
-        }
-
-        const nextX = {
-            color: "red"
-        }
-
-        return (
-            <div className='tic-tac-toe'>
-                <Board 
-                    onClick={this.clickHandler}
-                    squares={this.state.squares} 
-                    winner={this.state.winner}
+    return (
+        <>
+            <div className='field'>
+                <div className='field__status'>
+                    <span className={xO}>{whoNext}</span>
+                    <span>{findWinner} {result} {winner}</span>
+                </div>
+                <Field 
+                    onClick={clickHandler}
+                    squares={squares} 
+                    winnerShape={winner}
+                    winnerColor={winnerColor}
+                    disabled={disabled}
                 />
-                <h4 className='whoNext' 
-                    style={this.state.count % 2 === 0 ? nextX : nextO}>
-                    {whoNext()}
-                </h4>
-                <h1 className='result'>{result()}</h1>
             </div>
-        )
-    }
+        </>
+    )
 }
-
