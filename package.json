@@ -1,6 +1,11 @@
 {
     "name": "tictactoe",
     "version": "0.1.0",
+    "author": "Roman Gulamov",
+    "repository": {
+        "type": "git",
+        "url": "git+//https://github.com/Roman-Gulamov/Tic-tac-toe"
+    },
     "private": true,
     "dependencies": {
         "react": "^16.13.1",
