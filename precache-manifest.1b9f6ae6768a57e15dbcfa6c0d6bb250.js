@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "104e37bdbd54ede181c8f57bcfaeccad",
+    "revision": "41d37335ecec209563742a202d730f66",
     "url": "/Tic-tac-toe/index.html"
   },
   {
-    "revision": "b7d96f497d76e2278433",
-    "url": "/Tic-tac-toe/static/css/main.4aad1dc1.chunk.css"
+    "revision": "d527d8ea3311d3dc8664",
+    "url": "/Tic-tac-toe/static/css/main.13bb0a27.chunk.css"
   },
   {
     "revision": "435c80cc852287c361e2",
@@ -16,11 +16,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Tic-tac-toe/static/js/2.930e8bde.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b7d96f497d76e2278433",
+    "revision": "d527d8ea3311d3dc8664",
     "url": "/Tic-tac-toe/static/js/main.4205f004.chunk.js"
   },
   {
     "revision": "096f51d48281d1a1a360",
     "url": "/Tic-tac-toe/static/js/runtime-main.4849eb50.js"
+  },
+  {
+    "revision": "6548235ee4b7ca0b8a7d464546fa5ca5",
+    "url": "/Tic-tac-toe/static/media/comicbd.6548235e.ttf"
+  },
+  {
+    "revision": "c57dcf5163d7c36cc2dba22662950bcc",
+    "url": "/Tic-tac-toe/static/media/comicbd.c57dcf51.woff"
   }
 ]);
