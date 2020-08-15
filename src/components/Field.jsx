@@ -13,7 +13,7 @@ export const Field = ({ squares, onClick, disabled, winnerShape, winnerColor }) 
                     disabled={disabled}
                     winnerShape={
                         (winnerShape && winnerColor.find(winnerElem => winnerElem === index) !== undefined) ?
-                            "field__winnerColor" : ""
+                            "winnerColor" : ""
                     }
                 />
             ))}
