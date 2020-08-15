@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Field } from './Field';
 import { winnerLine } from './winnerLine/winnerLine';
 
@@ -10,10 +10,21 @@ export const Game = () => {
     const [result, setResult] = useState("");
     const [winner, setWinner] = useState("");
     const [disabled, setDisabled] = useState();
+    const [x, setX] = useState(0);
+    const [o, setO] = useState(0);
     
     const xO = (count % 2 === 0) ? "X" : "O";
     const whoNext = (squares.includes(null) && winner === "") ? `Next Player: ${xO}` : "";
-    const findWinner = (!squares.includes(null) && winner === "") ? "Draw" : "";
+    const draw = (!squares.includes(null) && winner === "") ? "Draw" : "";
+
+    
+    useEffect(() => {
+        if (winner === "X") {
+            setX(x => x + 1);
+        } else if (winner === "O") {
+            setO(o => o + 1);
+        }
+    }, [winner]);
 
 
     const clickHandler = (event) => {
@@ -27,6 +38,7 @@ export const Game = () => {
                 calculateWinner();
             }
     }
+
 
     const calculateWinner = () => {
         for (let i = 0; i < 8; i++) {
@@ -59,7 +71,12 @@ export const Game = () => {
             <div className='field'>
                 <div className='field__status'>
                     <span className={xO}>{whoNext}</span>
-                    <span>{findWinner} {result} {winner}</span>
+                    <span>{draw} {result} {winner}</span>
+                </div>
+                <div className="field__score">
+                    <span className='X'>{x}</span>
+                    :
+                    <span className="O">{o}</span>
                 </div>
                 <Field 
                     onClick={clickHandler}
