@@ -2,34 +2,38 @@
     "name": "tictactoe",
     "version": "0.1.0",
     "author": "Roman Gulamov",
+    "homepage": "https://roman-gulamov.github.io/Tic-tac-toe",
+    "private": true,
     "repository": {
         "type": "git",
         "url": "git+//https://github.com/Roman-Gulamov/Tic-tac-toe"
     },
-    "private": true,
     "dependencies": {
+        "gh-pages": "^3.1.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-scripts": "3.4.1"
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build"
+        "build": "react-scripts build",
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": "react-app"
     },
     "browserslist": {
         "production": [
-        ">0.2%",
-        "not dead",
-        "not op_mini all"
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
         ],
-    "development": [
-        "last 1 chrome version",
-        "last 1 firefox version",
-        "last 1 safari version"
-    ]
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     },
     "devDependencies": {
         "node-sass": "^4.14.1"
