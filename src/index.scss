@@ -1,14 +1,40 @@
+@font-face {
+    font-family: "Comic Sans MS Bold";
+	src: url('./assets/fonts/comicbd.ttf') format('ttf'),
+		url('./assets/fonts/comicbd.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
 body {
+    font-family: "Comic Sans MS Bold", cursive, sans-serif;
     background-color: #FFD8AB;
 }
 
 .field {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
-    margin: 170px auto;
+    margin: 45px auto;
     max-width: 300px;
     user-select: none;
+
+    &__status {
+        width: 100%;
+        color: #a6c420;
+        text-align: center;
+        
+        & span {
+            font-weight: bold;
+            font-size: 38px;
+        }
+    }
+    
+    &__score {
+        font-size: 38px;
+        width: 92%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
 
     &__board {
         display: flex;
@@ -20,27 +46,8 @@ body {
 
         & span {
             margin-top: 8px;
-            font-family: cursive;
             font-size: 50px;
             font-weight: bold;
-        }
-    }
-    
-    &__winnerColor {
-        background-color: #B7D98E;
-    }
-
-    &__status {
-        position: absolute;
-        bottom: 110%;
-        color: #a6c420;
-        width: 100%;
-        text-align: center;
-        
-        & span {
-            font-family: cursive;
-            font-weight: bold;
-            font-size: 40px;
         }
     }
 }
@@ -71,6 +78,10 @@ body {
 
 .O {
     color: #64B0D8;
+}
+
+.winnerColor {
+    background-color: #B7D98E;
 }
 
 
