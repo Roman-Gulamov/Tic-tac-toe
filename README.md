@@ -1,4 +1,4 @@
-## Инструкция для старта проекта:
+# Instructions for starting a project:
 
 1. `git clone https://github.com/Roman-Gulamov/Tic-tac-toe`
 
